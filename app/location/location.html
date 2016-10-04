@@ -1,0 +1,55 @@
+<div ng-if="locCtrl.geoLocation==null">
+    <h2 class="page-header">Share you location to get weather information.</h2>
+    <p class="alert alert-info">
+        Trying to get your location ... <span ng-bind="locCtrl.timer"></span>
+    </p>
+</div>
+
+<div ng-if="locCtrl.geoLocation==false && locCtrl.weather==null" class="row">
+    <h2 class="page-header">Input your postal code or country to get weather information.</h2>
+    <div class="row">
+        <div class="col-md-4 col-sm-6 col-xs-12">
+            <div class="alert alert-danger" ng-show="">
+                Please select either postal code or country.
+            </div>
+            <form name="locationForm" id="locationForm" ng-submit="locCtrl.submit(locationForm)" novalidate>
+                <div class="form-group"
+                     ng-class="{'has-error':locationForm.postal.$invalid && locationForm.postal.$dirty}">
+                    <label for="postal">
+                        Postal Code
+                    </label>
+                    <input type="number" class="form-control" id="postal" name="postal" placeholder="Postal Code"
+                           ng-model="locCtrl.postal" required>
+                    <p class="help-block" ng-show="locationForm.postal.$invalid && locationForm.postal.$dirty">
+                        Postal code is required and cannot be empty
+                    </p>
+                </div>
+                <div class="form-group"
+                     ng-class="{'has-error':locationForm.Country.$invalid && locationForm.Country.$dirty}">
+                    <label for="postal">
+                        2 Letter Country Code
+                    </label>
+                    <input type="text" class="form-control" id="Country" name="Country" placeholder="Country"
+                           ng-model="locCtrl.country" required maxlength="2">
+                    <p class="help-block" ng-show="locationForm.Country.$invalid && locationForm.Country.$dirty">
+                        Country is required and cannot be empty
+                    </p>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default" title="search" ng-disabled="locationForm.$invalid || !locationForm.$dirty">
+                        Search
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+<div class="row" ng-if="locCtrl.weather!=null">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <!-- weather-widget  -->
+        <exlord-weather weather="locCtrl.weather"></exlord-weather>
+        <a ng-click="locCtrl.weather=null">« back</a>
+    </div>
+</div>

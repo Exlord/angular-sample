@@ -1,0 +1,19 @@
+{
+  "name": "angular-sample",
+  "description": "A Sample Angular App",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.5.0",
+    "angular-route": "~1.5.0",
+    "angular-loader": "~1.5.0",
+    "angular-mocks": "~1.5.0",
+    "html5-boilerplate": "^5.3.0",
+    "bootstrap": "^3.3.7",
+    "angular-ui-router": "^0.3.1",
+    "oclazyload": "^1.0.9",
+    "angular-sanitize": "^1.5.8",
+    "angular-loading-bar": "^0.9.0"
+  }
+}
